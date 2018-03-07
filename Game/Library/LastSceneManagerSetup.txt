@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Reblox.unity
+- path: C:/Users/Jay/Desktop/Project3-RPG/Assets/enemyAItest.unity
   isLoaded: 1
   isActive: 1

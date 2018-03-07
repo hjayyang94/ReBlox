@@ -16,16 +16,13 @@ public class RollBox3 : MonoBehaviour {
     float rotationTime = 0;                 
     float radius = 1;                       
     Quaternion fromRotation;                
-    Quaternion toRotation;                  
+    Quaternion toRotation;                
+    public bool isStanding;
 
     // Use this for initialization
     void Start()
     {
-
-        
         scale = transform.lossyScale;
-        
-
     }
 
     // Update is called once per frame
@@ -109,27 +106,35 @@ public class RollBox3 : MonoBehaviour {
             if (Mathf.Abs(Vector3.Dot(transform.up, nomVec)) > 0.99)
             {                 
                 radius = Mathf.Sqrt(Mathf.Pow(scale.x / 2f, 2f) + Mathf.Pow(scale.y / 2f, 2f)); 
-                startAngleRad = Mathf.Atan2(scale.y, scale.x);                             
+                startAngleRad = Mathf.Atan2(scale.y, scale.x);
+                
             }
             else if (Mathf.Abs(Vector3.Dot(transform.forward, nomVec)) > 0.99)
             {       
                 radius = Mathf.Sqrt(Mathf.Pow(scale.x / 2f, 2f) + Mathf.Pow(scale.z / 2f, 2f));
                 startAngleRad = Mathf.Atan2(scale.z, scale.x);
+                
             }
 
+            isStanding = false;
         }
-        else if (Mathf.Abs(Vector3.Dot(transform.up, dirVec)) > 0.99)
+        else if (Mathf.Abs(Vector3.Dot(transform.up, dirVec)) > 0.99) //Rectangle is Standing
+            
         {                 
             if (Mathf.Abs(Vector3.Dot(transform.right, nomVec)) > 0.99)
             {               
                 radius = Mathf.Sqrt(Mathf.Pow(scale.y / 2f, 2f) + Mathf.Pow(scale.x / 2f, 2f));
                 startAngleRad = Mathf.Atan2(scale.x, scale.y);
+               
             }
             else if (Mathf.Abs(Vector3.Dot(transform.forward, nomVec)) > 0.99)
             {    
                 radius = Mathf.Sqrt(Mathf.Pow(scale.y / 2f, 2f) + Mathf.Pow(scale.z / 2f, 2f));
                 startAngleRad = Mathf.Atan2(scale.z, scale.y);
+                
             }
+
+            isStanding = true;
         }
         else if (Mathf.Abs(Vector3.Dot(transform.forward, dirVec)) > 0.99)
         {      
@@ -137,12 +142,16 @@ public class RollBox3 : MonoBehaviour {
             {               
                 radius = Mathf.Sqrt(Mathf.Pow(scale.z / 2f, 2f) + Mathf.Pow(scale.x / 2f, 2f));
                 startAngleRad = Mathf.Atan2(scale.x, scale.z);
+                
             }
             else if (Mathf.Abs(Vector3.Dot(transform.up, nomVec)) > 0.99)
             {              
                 radius = Mathf.Sqrt(Mathf.Pow(scale.z / 2f, 2f) + Mathf.Pow(scale.y / 2f, 2f));
                 startAngleRad = Mathf.Atan2(scale.y, scale.z);
+                
             }
+
+            isStanding = false;
         }
        
     }
