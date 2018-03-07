@@ -14,7 +14,12 @@ public class Timer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        timeTick();
+	}
+
+    public void timeTick ()
+    {
         timeRemaining -= Time.deltaTime;
         timerText.text = timeRemaining.ToString("f2");
-	}
+    }
 }
